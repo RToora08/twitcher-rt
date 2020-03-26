@@ -5,8 +5,12 @@ const cors = require('cors'); // Cross Origin Resource Sharing // Different port
 const bodyParser = require('body-parser'); // body-parser allows to get data from a forum via POST
 const errorHandler = require('./handlers/error'); // piece of middle for formatting errors
 
+// importing routes
 const authRoutes = require('./routes/auth');
 const messagesRoutes = require('./routes/messages');
+
+// importing routes
+const { loginRequired, ensureCorrectUser } = require('./middleware/auth');
 
 const PORT = 8081;
 
@@ -15,7 +19,7 @@ app.use(bodyParser.json());
 
 // Specifying Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/users/:id/messages', messagesRoutes);
+app.use('/api/users/:id/messages', loginRequired, ensureCorrectUser, messagesRoutes);
 
 // if none of those routes were reached run this function
 // i.e. using errorHandler
