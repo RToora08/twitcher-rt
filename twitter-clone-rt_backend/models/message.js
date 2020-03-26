@@ -1,17 +1,22 @@
 const mongoose = require('mongoose');
 const User = require('./user'); // Every message has a reference to the user who created it
 
-const messageSchema = new mongoose.Schema({
-	text: {
-		type: String,
-		required: true,
-		maxLength: 200
+const messageSchema = new mongoose.Schema(
+	{
+		text: {
+			type: String,
+			required: true,
+			maxLength: 200
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User'
+		}
 	},
-	user: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
+	{
+		timestamps: true
 	}
-});
+);
 
 messageSchema.pre('remove', async function(next) {
 	try {
