@@ -18,7 +18,14 @@ const userSchema = new mongoose.Schema({
 	},
 	profileImageUrl: {
 		type: String
-	}
+	},
+	// all the messages that belongs to a user
+	messages: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Message'
+		}
+	]
 });
 
 // Adding a pre 'save' hook
@@ -36,14 +43,17 @@ userSchema.pre('save', async function(next) {
 	}
 });
 
-// Instance method
-// i.e. every document we create from 'User' model will have this method
-userSchema.method.comparePassword = async function(candidatePassword, next) {
+// Adding a method
+// This is the idea of an instance method or a method that every
+// document that we create from this model has
+userSchema.methods.comparePassword = async function(candidatePassword, next) {
 	try {
+		// this will compare the hash that is crated from the user input 'candidatePassword'
+		// with the hash that is in the database and will return true or false
 		let isMatch = await bcrypt.compare(candidatePassword, this.password);
-		return isMatch;
+		return isMatch; // if isMatch is true then you'll log in successfully
 	} catch (err) {
-		return next();
+		return next(err);
 	}
 };
 
