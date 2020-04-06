@@ -12,17 +12,19 @@ class Navbar extends Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-expand">
+			<nav className="fixed-top navbar navbar-expand">
 				<div className="container-fluid">
 					<div className="navbar-header">
 						<Link to="/" className="navbar-brand">
-							<img src={Logo} alt="Home" />
+							<img id="logo" src={Logo} alt="Home" />
 						</Link>
 					</div>
 					{this.props.currentUser.isAuthenticated ? (
 						<ul className="nav navbar-nav navbar-right">
 							<li>
-								<Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>New Message</Link>
+								<Link id="whats-happening" to={`/users/${this.props.currentUser.user.id}/messages/new`}>
+									What's Happening?
+								</Link>
 							</li>
 							<li>
 								<a onClick={this.logout}>Log out</a>

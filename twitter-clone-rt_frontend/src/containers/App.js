@@ -23,7 +23,9 @@ const App = () => (
 		<Router>
 			<div className="onboarding">
 				<Navbar />
-				<Main />
+				<div id="main">
+					<Main />
+				</div>
 			</div>
 		</Router>
 	</Provider>

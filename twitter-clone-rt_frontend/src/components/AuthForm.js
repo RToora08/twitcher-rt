@@ -82,6 +82,7 @@ export default class AuthForm extends Component {
 									/>
 								</div>
 							)}
+							<br />
 							<button type="submit" className="btn btn-primary btn-block btn-lg">
 								{buttonText}
 							</button>
