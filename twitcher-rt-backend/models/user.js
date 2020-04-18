@@ -22,12 +22,13 @@ const userSchema = new mongoose.Schema({
 // adding a pre save hook which means right before
 // saving this document run this async function
 // which allows the use of await keyword which means
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function(next) {
 	try {
 		if (!this.isModified('password')) {
 			return next();
-		} // bcrypt.hash is an asynchronous function // so we have to wait for it to finish hence the await keyword
-		let hashedPassword = await bcrypt.hash(this.password, 187858);
+		}
+		// bcrypt.hash is an asynchronous function // so we have to wait for it to finish hence the await keyword
+		let hashedPassword = await bcrypt.hash(this.password, 10);
 		this.password = hashedPassword;
 		return next();
 	} catch (err) {

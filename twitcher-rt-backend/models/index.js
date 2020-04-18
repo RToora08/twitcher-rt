@@ -4,3 +4,5 @@ mongoose.Promise = Promise; // specifying ES2015 Promise Library to avoid using 
 mongoose.connect('mongodb://localhost/twitcher-rt', {
 	keepAlive: true
 });
+
+module.exports.User = require('./user'); // idea of bundling, you can create different properties on module.exports for different models
