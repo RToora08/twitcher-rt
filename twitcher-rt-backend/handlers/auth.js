@@ -16,7 +16,12 @@ exports.signup = async (req, res, next) => {
 		// if you decrypt the token you can get access to these
 		// properties(id, username, ..) also called payload
 		let token = jwt.sign({ id, username, profileImageUrl }, process.env.SECRET_KEY);
-		return res.status(200).json({ id, username, profileImageUrl, token });
+		return res.status(200).json({
+			id,
+			username,
+			profileImageUrl,
+			token
+		});
 	} catch (err) {
 		// if something goes wrong
 		// see what king of error it is
@@ -31,6 +36,47 @@ exports.signup = async (req, res, next) => {
 		return next({
 			status: 400,
 			message: err.message
+		});
+	}
+};
+
+exports.signin = async function(req, res, next) {
+	try {
+		// find the user
+		let user = await db.User.findOne({
+			email: req.body.email
+		});
+		let { id, username, profileImageUrl } = user;
+
+		// check if their password matches what was sent to the server
+		let isMatch = await user.comparePassword(req.body.password);
+		// if it all matches
+		if (isMatch) {
+			// log the in / create a jwt and send it back in the response
+			let token = jwt.sign(
+				{
+					id,
+					username,
+					profileImageUrl
+				},
+				process.env.SECRET_KEY
+			);
+			return res.status(200).json({
+				id,
+				username,
+				profileImageUrl,
+				token
+			});
+		} else {
+			return next({
+				status: 400,
+				message: 'Invalid email/password.'
+			});
+		}
+	} catch (err) {
+		return next({
+			status: 400,
+			message: 'Invalid email/password.'
 		});
 	}
 };

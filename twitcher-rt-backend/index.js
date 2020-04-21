@@ -1,11 +1,11 @@
 require('dotenv').config(); // to load environment variables
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const cors = require('cors'); // cross origin resource sharing to handle data from another domains
+const bodyParser = require('body-parser'); // to get data from a form via POST request
 
-const errorHandler = require('./handlers/error');
-const authRoutes = require('./routes/auth');
+const errorHandler = require('./handlers/error'); // loading error handler
+const authRoutes = require('./routes/auth'); // loading router
 
 const PORT = process.env.PORT || 3001;
 

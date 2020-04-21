@@ -28,7 +28,7 @@ userSchema.pre('save', async function(next) {
 			return next();
 		}
 		// bcrypt.hash is an asynchronous function // so we have to wait for it to finish hence the await keyword
-		let hashedPassword = await bcrypt.hash(this.password, 10);
+		let hashedPassword = await bcrypt.hash(this.password, parseInt(process.env.SALT));
 		this.password = hashedPassword;
 		return next();
 	} catch (err) {
@@ -38,7 +38,7 @@ userSchema.pre('save', async function(next) {
 
 // adding an instance method which means every document we
 // create from this model will have this method
-userSchema.method.comparePassword = async (candidatePassword, next) => {
+userSchema.methods.comparePassword = async function(candidatePassword, next) {
 	// the idea of checking if the user has put correct password
 	// is to re-encrypting the user input and comparing it against
 	// the the hash that is saved in the database
@@ -49,6 +49,7 @@ userSchema.method.comparePassword = async (candidatePassword, next) => {
 		next(err);
 	}
 };
+
 // User is a model which is going to use userSchema to create every user object
 const User = mongoose.model('User', userSchema);
 module.exports = User;
