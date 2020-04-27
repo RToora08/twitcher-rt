@@ -1,0 +1,108 @@
+GET http://localhost:3001/
+
+// Signing Up User
+
+### 
+POST http://localhost:3001/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "rocky",
+    "password": "pwd",
+    "email": "rocky@gmail.com"
+}
+###
+POST http://localhost:3001/api/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "hacker",
+    "password": "hacker",
+    "email": "hacker@gmail.com"
+}
+
+
+// Signing In User
+
+### 
+POST http://localhost:3001/api/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "password": "pwd",
+    "email": "rocky@gmail.com"
+}
+###
+POST http://localhost:3001/api/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "password": "hacker",
+    "email": "hacker@gmail.com"
+}
+
+
+// Testing Middlewares - loginRequired, ensureCorrectUser
+
+### this request will ensure loginRequired middleware is working
+    // rocky's user id
+// invalid request
+POST http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages HTTP/1.1
+content-type: application/json
+
+{
+    "text": "Hello World!"  
+}
+###
+// valid request
+POST http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTY2NzNkYmU4YjdhMDE2MmZlNTJjZSIsInVzZXJuYW1lIjoicm9ja3kiLCJpYXQiOjE1ODc5NjQ0Nzl9.yTTbSHoeJDe9y0jrKL14ywjZd2ai6U72xJ5BMedcQaU
+
+{
+    "text": "Hello World 1"  
+}
+
+### In order to test ensureCorrectUser middleware; first log in
+    // rocky's user id
+    // hacker's token
+POST http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTVmNThhMjFiYTRkMDEyYzMyNTQxZSIsInVzZXJuYW1lIjoiaGFja2VyIiwiaWF0IjoxNTg3OTU4MDQzfQ.yH0r89bV_szAXhAyZBbco568FnUHxleRHhyolmhwX8o
+
+{
+    "text": "Hello World!"   
+}
+
+// Testing getMessage, deleteMessage and get all message route
+
+### // Testing createMessage
+    // Making a post request to create a message by passing the correct
+    // token associated wiht the rokcy's user account
+POST http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTY2NzNkYmU4YjdhMDE2MmZlNTJjZSIsInVzZXJuYW1lIjoicm9ja3kiLCJpYXQiOjE1ODc5NjQ0Nzl9.yTTbSHoeJDe9y0jrKL14ywjZd2ai6U72xJ5BMedcQaU
+
+{
+    "text": "Hello Rocky"  
+}
+### // Testing getMessage
+    // message_id: "5ea66180a3aee202df873f43"
+    // rocky's token
+GET http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages/5ea66ae844d2f601acab2dd1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTY2NzNkYmU4YjdhMDE2MmZlNTJjZSIsInVzZXJuYW1lIjoicm9ja3kiLCJpYXQiOjE1ODc5NjQ0Nzl9.yTTbSHoeJDe9y0jrKL14ywjZd2ai6U72xJ5BMedcQaU
+
+### // Testing deleteMessage
+    // message_id: "5ea66180a3aee202df873f43"
+    // rocky's token
+DELETE http://localhost:3001/api/users/5ea6673dbe8b7a0162fe52ce/messages/5ea66ae844d2f601acab2dd1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTY2NzNkYmU4YjdhMDE2MmZlNTJjZSIsInVzZXJuYW1lIjoicm9ja3kiLCJpYXQiOjE1ODc5NjQ0Nzl9.yTTbSHoeJDe9y0jrKL14ywjZd2ai6U72xJ5BMedcQaU
+
+### // Testing get all messages
+    // rocky's token
+GET http://localhost:3001/api/messages HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYTY2NzNkYmU4YjdhMDE2MmZlNTJjZSIsInVzZXJuYW1lIjoicm9ja3kiLCJpYXQiOjE1ODc5NjQ0Nzl9.yTTbSHoeJDe9y0jrKL14ywjZd2ai6U72xJ5BMedcQaU
+

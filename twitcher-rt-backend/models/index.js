@@ -6,3 +6,4 @@ mongoose.connect('mongodb://localhost/twitcher-rt', {
 });
 
 module.exports.User = require('./user'); // idea of bundling, you can create different properties on module.exports for different models
+module.exports.Message = require('./message');

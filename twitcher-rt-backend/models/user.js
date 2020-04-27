@@ -17,7 +17,14 @@ const userSchema = new mongoose.Schema({
 	},
 	profileImageUrl: {
 		type: String
-	}
+	},
+	// array/list of messages that refers to individual message_id
+	messages: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Message'
+		}
+	]
 });
 // adding a pre save hook which means right before
 // saving this document run this async function
