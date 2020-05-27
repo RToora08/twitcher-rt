@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/twitcher-rt/frontend/static/css/main.f70aa5f6.chunk.css",
-    "main.js": "/twitcher-rt/frontend/static/js/main.1db1d76d.chunk.js",
-    "main.js.map": "/twitcher-rt/frontend/static/js/main.1db1d76d.chunk.js.map",
-    "runtime-main.js": "/twitcher-rt/frontend/static/js/runtime-main.a833f65a.js",
-    "runtime-main.js.map": "/twitcher-rt/frontend/static/js/runtime-main.a833f65a.js.map",
-    "static/js/2.3ef7c389.chunk.js": "/twitcher-rt/frontend/static/js/2.3ef7c389.chunk.js",
-    "static/js/2.3ef7c389.chunk.js.map": "/twitcher-rt/frontend/static/js/2.3ef7c389.chunk.js.map",
-    "index.html": "/twitcher-rt/frontend/index.html",
-    "precache-manifest.60cc7af4ea07c1e2638661ec57f52788.js": "/twitcher-rt/frontend/precache-manifest.60cc7af4ea07c1e2638661ec57f52788.js",
-    "service-worker.js": "/twitcher-rt/frontend/service-worker.js",
-    "static/css/main.f70aa5f6.chunk.css.map": "/twitcher-rt/frontend/static/css/main.f70aa5f6.chunk.css.map",
-    "static/js/2.3ef7c389.chunk.js.LICENSE.txt": "/twitcher-rt/frontend/static/js/2.3ef7c389.chunk.js.LICENSE.txt",
-    "static/media/brand-logo.svg": "/twitcher-rt/frontend/static/media/brand-logo.72f13d44.svg"
+    "main.css": "/twitcher-rt/static/css/main.f70aa5f6.chunk.css",
+    "main.js": "/twitcher-rt/static/js/main.ba241774.chunk.js",
+    "main.js.map": "/twitcher-rt/static/js/main.ba241774.chunk.js.map",
+    "runtime-main.js": "/twitcher-rt/static/js/runtime-main.4458e166.js",
+    "runtime-main.js.map": "/twitcher-rt/static/js/runtime-main.4458e166.js.map",
+    "static/js/2.3ef7c389.chunk.js": "/twitcher-rt/static/js/2.3ef7c389.chunk.js",
+    "static/js/2.3ef7c389.chunk.js.map": "/twitcher-rt/static/js/2.3ef7c389.chunk.js.map",
+    "index.html": "/twitcher-rt/index.html",
+    "precache-manifest.6dd11ae384c073eaaec59289ad194734.js": "/twitcher-rt/precache-manifest.6dd11ae384c073eaaec59289ad194734.js",
+    "service-worker.js": "/twitcher-rt/service-worker.js",
+    "static/css/main.f70aa5f6.chunk.css.map": "/twitcher-rt/static/css/main.f70aa5f6.chunk.css.map",
+    "static/js/2.3ef7c389.chunk.js.LICENSE.txt": "/twitcher-rt/static/js/2.3ef7c389.chunk.js.LICENSE.txt",
+    "static/media/brand-logo.svg": "/twitcher-rt/static/media/brand-logo.72f13d44.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a833f65a.js",
+    "static/js/runtime-main.4458e166.js",
     "static/js/2.3ef7c389.chunk.js",
     "static/css/main.f70aa5f6.chunk.css",
-    "static/js/main.1db1d76d.chunk.js"
+    "static/js/main.ba241774.chunk.js"
   ]
 }
