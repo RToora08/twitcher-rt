@@ -10,17 +10,18 @@
 
 .links a {
 	font-weight: bold;
-
-	color: #14171a;
+	background-color: #1da1f2;
+	border-radius: 30px;
+	color: white;
 	margin: 0px 20px;
 	padding: 10px 20px;
+	text-decoration: none;
 }
 
 .links a:hover {
-	background-color: rgba(29, 161, 242, 0.1);
+	background-color: #007bff;
 	transition-duration: 0.2s;
-	border-radius: 30px;
-	text-decoration: none;
+	box-shadow: 0 8px 6px -6px gray;
 }
 
 .links li:hover {
@@ -28,7 +29,7 @@
 }
 
 .navbar-brand {
-	margin-left: 20px;
+	margin-left: 2vw;
 }
 
 .navbar-brand > img {
@@ -42,7 +43,39 @@ ul.nav.navbar-nav li {
 	margin: 0 2rem;
 }
 
-.active {
-	background-color: rgba(29, 161, 242, 0.1);
-	border-radius: 30px;
+/* Homepage */
+
+.home-hero {
+	width: 80vw;
+	height: 80vh;
+	position: absolute;
+	top: 15vh;
+	left: 15vw;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.welcomeMsg {
+	font-size: 5rem;
+	position: relative;
+	margin-bottom: -98.5px;
+	margin-left: -81.5px;
+}
+
+.oo {
+	position: relative;
+	margin-left: -20px;
+}
+.twit {
+	font-size: 8rem;
+}
+
+.btn:hover {
+	box-shadow: 0 8px 6px -6px gray;
+}
+
+.signupBtn {
+	margin-left: 22rem;
 }

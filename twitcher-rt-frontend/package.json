@@ -1,5 +1,6 @@
 {
 	"name": "twitcher-rt-frontend",
+	"homepage": "https://rt8v10.github.io/twitcher-rt/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -8,6 +9,7 @@
 		"@testing-library/user-event": "^7.2.1",
 		"axios": "^0.19.2",
 		"classnames": "^2.2.6",
+		"gh-pages": "^2.2.0",
 		"jwt-decode": "^2.2.0",
 		"moment": "^2.24.0",
 		"react": "^16.13.1",
@@ -24,21 +26,15 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
 	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
 	}
 }

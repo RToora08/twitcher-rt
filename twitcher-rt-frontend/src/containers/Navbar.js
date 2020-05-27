@@ -3,6 +3,11 @@ import { NavLink, Link } from 'react-router-dom'; // for client side routing
 import { connect } from 'react-redux'; // to connect to store
 import brandLogo from '../images/brand-logo.svg';
 
+const active = {
+	backgroundColor: '#007bff',
+	boxShadow: '0 10px 6px -6px gray'
+};
+
 class Navbar extends Component {
 	render() {
 		return (
@@ -15,10 +20,14 @@ class Navbar extends Component {
 				<div>
 					<ul className="nav links float-right">
 						<li>
-							<NavLink to="/signup">Sign Up</NavLink>
+							<NavLink to="/signup" activeStyle={active}>
+								Sign Up
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/signin">Log In </NavLink>
+							<NavLink to="/signin" activeStyle={active}>
+								Log In
+							</NavLink>
 						</li>
 					</ul>
 				</div>
